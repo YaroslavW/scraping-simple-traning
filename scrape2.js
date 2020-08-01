@@ -7,8 +7,9 @@ request(
     if (!error && response.statusCode == 200) {
       const $ = cheerio.load(html);
      $('.stack2 tbody tr').each((i, el)=>{
-       const title = $(el).find('th a').text()
-       console.log(title)
+       const title = $(el).find('th a').text().replace(/\s\s+/g, '')
+        const link = $(el).find("th a").attr('href')
+       console.log(title, link)
      })
     } else {
       console.log(error);
